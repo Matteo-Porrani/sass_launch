@@ -1,0 +1,111 @@
+/*
+You could also use an alias
+    @use '../utils' as ut;
+And then write
+    font-family: ut.$font;
+*/
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Roboto Slab", serif;
+  background-color: var(--bg-color);
+  color: hsl(0deg, 0%, 100%);
+  max-width: 90%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+.text-crim-1 {
+  color: #ff99bb;
+}
+
+.text-crim-3 {
+  color: #cc0044;
+}
+
+.text-crim-5 {
+  color: #330011;
+}
+
+.color-banner {
+  height: 100px;
+  background-color: #e04a4a;
+}
+
+.nonbemcard {
+  background-color: green;
+  border: 5px solid yellow;
+  border-radius: 10px;
+  color: #212529;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+.nonbemcard h2 {
+  background-color: #eee;
+}
+.nonbemcard p {
+  color: navy;
+}
+
+.bike {
+  color: orange;
+}
+.bike-p {
+  line-height: 1.5;
+}
+.bike-p-special {
+  color: red;
+}
+
+.card {
+  background-color: #ff8c42;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+.card .card__header {
+  background-color: #212529;
+  margin-bottom: 0.5rem;
+}
+.card__body {
+  background-color: #eee;
+  color: #212529;
+  padding: 1rem;
+}
+.card__body__image {
+  display: block;
+  margin: 1rem auto;
+}
+.card__body__summary {
+  font-size: 1.1rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 700;
+  line-height: 1.1;
+  margin-top: 0;
+}
+
+p {
+  margin-top: 0;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+:root {
+  --bg-color: #21325b;
+}/*# sourceMappingURL=style.css.map */

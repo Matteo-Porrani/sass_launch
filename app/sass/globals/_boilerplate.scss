@@ -1,0 +1,120 @@
+@use '../utils';
+/*
+You could also use an alias
+    @use '../utils' as ut;
+And then write
+    font-family: ut.$font;
+*/
+
+html {
+  box-sizing: border-box;
+  font-size: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: utils.$font;
+  // Note that variable names must be preceeded by the namespace
+  background-color: var(--bg-color);
+  color: hsl(0, 0%, 100%);
+
+  max-width: 90%;
+
+  padding: 0;
+  margin: 0 auto;
+}
+
+$hero-c: #ffc107;
+$mate-c: #ff8c42;
+$dark-c: #212529;
+
+.text-crim-1 {
+  color: map-get(utils.$crimson, '100');
+}
+.text-crim-3 {
+  color: map-get(utils.$crimson, '300');
+}
+.text-crim-5 {
+  color: map-get(utils.$crimson, '500');
+}
+
+.color-banner {
+  height: 100px;
+  background-color: map-get(utils.$shades-red, 'medium');
+}
+
+// mixin (basic style for card with 2 arguments)
+@mixin card-basics($bgcol, $bdcol) {
+  background-color: $bgcol;
+  border: 5px solid $bdcol;
+  border-radius: 10px;
+  color: $dark-c;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
+// nesting
+
+.nonbemcard {
+  // background: $hero-c;
+  // color: $dark-c;
+  // padding: 2rem;
+  // margin-bottom: 1rem;
+  @include card-basics(green, yellow);
+  h2 {
+    background-color: #eee;
+  }
+
+  p {
+    color: navy;
+  }
+}
+
+// Nesting (1)
+.bike {
+  color: orange;
+
+  &-p {
+    line-height: 1.5;
+
+    &-special {
+      color: red;
+    }
+  }
+}
+
+// Nesting (2)
+.card {
+  background-color: $mate-c;
+  padding: 2rem;
+  margin-bottom: 1rem;
+
+  #{&}__header {
+    // .card__header {}
+    background-color: $dark-c;
+    margin-bottom: 0.5rem;
+  }
+
+  &__body {
+    // .card__body {}
+    background-color: #eee;
+    color: $dark-c;
+
+    padding: 1rem;
+
+    &__image {
+      // .card__body__image
+      display: block;
+      margin: 1rem auto;
+    }
+
+    &__summary {
+      font-size: 1.1rem;
+    }
+  }
+}
