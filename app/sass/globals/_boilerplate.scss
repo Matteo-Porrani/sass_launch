@@ -61,10 +61,7 @@ $dark-c: #212529;
 // nesting
 
 .nonbemcard {
-  // background: $hero-c;
-  // color: $dark-c;
-  // padding: 2rem;
-  // margin-bottom: 1rem;
+  // use of the mixin with arguments
   @include card-basics(green, yellow);
   h2 {
     background-color: #eee;
@@ -116,5 +113,63 @@ $dark-c: #212529;
     &__summary {
       font-size: 1.1rem;
     }
+  }
+}
+
+// Extend
+
+.extendDiv {
+  .extendParag1 {
+    color: red;
+    font-size: 1.1rem;
+    &:hover {
+      color: yellow;
+    }
+  }
+
+  .extendParag2 {
+    @extend .extendParag1;
+    // we inherit all the styles of '.extendParag1'
+    // and override some
+    width: 50%;
+    &:hover {
+      color: cyan;
+    }
+  }
+}
+
+@mixin sampleParag {
+  color: red;
+  font-size: 1.1rem;
+  &:hover {
+    color: yellow;
+  }
+}
+
+.mixinDiv {
+  .mixinParag1,
+  .mixinParag2 {
+    @include sampleParag();
+  }
+
+  .mixinParag2 {
+    width: 50%;
+    &:hover {
+      color: cyan;
+    }
+  }
+}
+
+// Loops
+
+@each $icon in home, account, contact, settings {
+  .icon-#{$icon} {
+    background-image: url('assets/images/#{$icon}.png');
+  }
+}
+
+@for $i from 0 through 5 {
+  .bg-blue-#{$i} {
+    background-color: hsl(230 80 ($i * 20));
   }
 }
